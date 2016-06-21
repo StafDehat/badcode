@@ -1,0 +1,70 @@
+For git beginners, your workflow is generally going to be the following:
+> Clone the repo:
+  # git clone https://github.com/USERNAME/badcode
+> If you already had the repo cloned, just make sure you're up-to-date:
+  # git fetch origin
+  # git pull origin master
+> Make changes:
+  # vi blah
+  # touch test
+  # rm -f bogus
+> Tell git to include your changes as part of the next commit:
+  # git add blah
+  # git add test
+  # git rm bogus
+> Make a commit (ie: checkpoint, changelog entry, rollback-point, etc)
+  # git commit
+> Update github.com with any commits you have, but github.com doesn't have yet:
+  # git push origin master
+
+
+Copy a repo from github.com to your workstation:
+# git clone https://github.com/USERNAME/REPOSITORY
+
+To update your local copy with any changes that have gone into github.com:
+# git fetch origin master
+# git pull origin master
+
+List all the remote repos in your local .git information:
+# git remote -v
+
+List all local branches (ie: named versions):
+# git branch
+
+List all branches - even the branches at your 'remotes':
+# git branch -a
+
+Create a new 'branch' (kinda like making a copy of this whole directory):
+Note: Useful for making a backup before you try something crazy.
+# git branch new-branch-name
+
+Switch to a different branch (kinda like cd'ing into that directory copy you made earlier):
+# git checkout branch-name
+
+Delete a branch you don't need anymore:
+# git branch -D branch-name
+
+See the changelog of commits:
+# git log
+
+Temporarily switch to a specific commit from the changelog:
+# git checkout commit-id
+
+Permanently roll-back to a specific commit from the changelog:
+Note: All commits that occurred after the specific commit-id are LOST!
+      It's probably a good idea to make a backup branch before you do this!
+# git reset --hard commit-id
+
+Push changes to github.com:
+# git push origin master
+
+Push a specific (ie: not "master") branch up to github.com:
+# git checkout branch-name
+# git push origin branch-name
+
+Delete a branch from github.com:
+# git push origin :branch-name
+
+
+
+
