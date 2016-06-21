@@ -14,3 +14,11 @@ def next20Leaps():
   nextXLeaps(20)
 #end next20Leaps()
 
+print "Next 20 leap years:"
+next20Leaps()
+
+print "Next 100 leap years:"
+nextXLeaps(100)
+
+print "First 100 leap years (AD):"
+
