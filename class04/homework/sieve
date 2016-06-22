@@ -1,0 +1,6 @@
+Update your sieve program, so primesUnder() automatically extends the length of your list of booleans, to whatever length necessary.
+
+Add a couple functions to your sieve program:
+1) Save your current list of booleans (your lookup-table) out to a file
+2) Check for existence of a saved lookup-table file, and if exists, load a list from that file, instead of calculating it from scratch.
+
