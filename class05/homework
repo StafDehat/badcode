@@ -1,0 +1,53 @@
+Initially we determined whether a number was prime by performing trial division.  That's about the slowest way to do it.  We sped things up a bit by using the Sieve of Eratosthenes instead.  Now we're gonna speed things up a bit more.
+
+Goal: Optimize your Sieve of Eratosthenes program.  There are a couple things we can do to speed it up.
+
+First, to see if N is prime, we don't need to test every number between 2 and N.  We only need to test the numbers from 2 to sqrt(N).  Here's why:
+http://stackoverflow.com/questions/5811151/why-do-we-check-upto-the-square-root-of-a-prime-number-to-determine-if-it-is-pri
+
+So currently, you've probably got a loop going from 2 to N - change that to iterate from 2 to sqrt(N) instead.
+That much should be trivially easy, if you use the math library.  Go ahead and do that for starters, but for some real fun, write your own sqrt() function.
+
+So for the sqrt() function, we don't actually need to know the exact sqrt - only the whole number just below the sqrt (ie: the floor).
+floor(2.5) = 2
+floor(3.14159) = 3
+floor(5.99999) = 5
+You get the idea.
+
+Try writing your own floorSqrt() function that returns the floor() of the sqrt() of N.  You're not allowed to use division in this function ('cause division is crazy slow).  However, you're free to use bitwise shifts.  Bit shifts are crazy fast.  Do them in python with the << and >> operators.  There's information on this operator here:
+https://wiki.python.org/moin/BitwiseOperators
+
+The important take-away is that x>>1 is pretty darn similar to x/2 (it just discards the fraction), and x<<1 is equivalent to x*2.
+
+With these tools, you can write a sort of 'binary search tree' algorithm to calculate an approximate of sqrt().  It'll work kinda like this:
+
+First, find a range in which the sqrt(N) must exist.
+Pick a low point and a high point of your range.  Low should start at 1 - high is kind of arbitrary.
+If high*high > N, then sqrt(N) must be <high, and sqrt(N) must be within your low-high range.
+If high*high < N, then sqrt(N) must be >high, so you don't have a range yet.  Move the value of high into low, pick a new value for high, and repeat.
+
+Once you've found the range, you can perform a binary search within that range to find the sqrt(N).
+Find the midpoint of your range (remember, don't use division).
+Compare mid*mid to N.  sqrt(N) will be in either top or bottom half of your range.  Redefine the low & high points and repeat.
+Stop when your range is x,x+1.  For example, sqrt(8) = 2.something, so when your range is 2,3 then you're done.  floorSqrt(8) is 2, since 3*3 > 8.
+
+
+
+Second homework item:
+Don't calculate the entire sieve every time.  If I want to test 5x numbers for prime-ness in a row, I might run this in a single program:
+isPrime(1685318384743)
+isPrime(1561688315)
+isPrime(578943279321)
+isPrime(18566181833)
+isPrime(1864863738384534681)
+
+After building the sieve for the first number, I've already generated a sieve large enough to solve the next three, so I shouldn't have to do anything but a simple lookup to answer those next three.  
+
+Once I get to the fifth though, I realize that my sieve isn't large enough yet.  I've already done a lot of the work though, so don't regenerate a sieve from scratch.  Rewrite your isPrime function to take the existing sieve list, test if it's large enough to lookup N, and if not, grow it as necessary.  This will help:
+http://stackoverflow.com/questions/252703/append-vs-extend
+
+
+
+
+
+
