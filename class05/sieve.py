@@ -37,8 +37,24 @@ def primesUnder(x):
 
 # Generate the lookup table using the Sieve algorithm
 # I suggest using a List of Booleans as your data structure.
-sieve = [True] * 100000
-eratosthisList(sieve)
 
-primesUnder(100000)
+sieve = [False, False, True]
+primesUnder(3)
+primesUnder(10)
+primesUnder(100)
+primesUnder(50)
+primesUnder(1000)
 
+
+if length of list is = or > than X
+  We can print primesUnder(X)
+else
+  Better make the list bigger
+  Start with list as it is.
+  Tack on as many True as necessary to get a list of size X
+  Iterate from 2 to sqrt(newSize)
+    sieveOut(i)
+
+But: when we sieveOut
+  We can safely assume X<oldSize has already been sieved.
+  Unsure whether that helps us save time or not.  Try it!
