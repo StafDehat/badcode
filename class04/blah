@@ -1,0 +1,46 @@
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+ 0  0  1  1  0  1  0  1  0  0
+
+
+list[0] = False
+list[1] = False
+
+
+#length = len(list)
+#for x in the list:
+for x in xrange(2,len(list)):
+#  if list[x] is True (or 1):
+#    y=x+x
+#    while y < length:
+#      list[y] = 0 False
+#      y=y + x
+#    #end while
+#  #end if
+##end for
+
+
+
+# Iterate over the whole list
+# For each number in the list, remove its multiples
+eratosthisList()
+
+
+# Remove all multiples of x
+sieveOut(x)
+
+
+
+
+
+
+sieveOfErat(list):
+  for every number in the list
+    sieveOut(thatNumber)
+
+
+
+sieveOut:
+  Remove multiples of x
+
+
+
